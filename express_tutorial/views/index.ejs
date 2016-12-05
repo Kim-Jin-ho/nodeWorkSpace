@@ -1,0 +1,29 @@
+<!--
+한번에 view 구성 방법.
+<html>
+  <head>
+  <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <h1>Loop it!</h1>
+    <ul>
+        <% for(var i=0; i<length; i++){ %>
+            <li>
+                <%= "LOOP" + i %>
+            </li>
+        <% } %>
+    </ul>
+  </body>
+</html>
+-->
+
+<html>
+  <head>
+    <!-- 파일 분할해서 가져오기 -->
+    <% include ./header.ejs %>
+  </head>
+  <body>
+    <% include ./body.ejs %>
+  </body>
+</html>
