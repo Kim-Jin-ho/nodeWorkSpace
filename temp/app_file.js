@@ -16,6 +16,7 @@ app.get('/topic/new', function(req, res)
   res.render('new');
 })
 
+
 // post 방식 처리 방법
 // 사용자로부터 제목과 내용을 받아
 // 파일을 만드는 예제
