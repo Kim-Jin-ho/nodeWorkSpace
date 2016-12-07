@@ -3,6 +3,8 @@ var app = express();
 var bodyParser = require('body-parser');
 app.locals.pretty = true;
 
+
+app.use(bodyParser.urlencoded({extended:false}))
 // 템플릿 엔진 set
 app.set('view engine', 'jade');
 app.set('views', './views');
