@@ -16,6 +16,18 @@ app.get('/topic/new', function(req, res)
   res.render('new');
 })
 
+app.get('/topic', function(req, res)
+{
+  fs.readdir('data',function(err, files)
+  {
+      if(err)
+      {
+        console.log(err);
+        res.statuc(500).send('Internal Server Error')
+      }
+      res.render('view', {topics:files});
+  })
+})
 
 // post 방식 처리 방법
 // 사용자로부터 제목과 내용을 받아
