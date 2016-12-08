@@ -13,10 +13,18 @@ app.set('view engine','jade');
 // get 방식 처리 방법
 app.get('/topic/new', function(req, res)
 {
-  res.render('new');
+  fs.readdir('data',function(err, files)
+  {
+      if(err)
+      {
+        console.log(err);
+        res.statuc(500).send('Internal Server Error')
+      }
+      res.render('new',{topics:files});
+  });
 })
 
-app.get('/topic', function(req, res)
+app.get(['/topic','/topic/:id'], function(req, res)
 {
   fs.readdir('data',function(err, files)
   {
@@ -25,9 +33,54 @@ app.get('/topic', function(req, res)
         console.log(err);
         res.statuc(500).send('Internal Server Error')
       }
-      res.render('view', {topics:files});
+      var id = req.params.id;
+      if(id)
+      {
+        // id 값이 있을때
+        fs.readFile('data/'+id,'utf8', function(err, data)
+        {
+          if(err)
+          {
+            // 에러가 발견 될 시 아래의 예외처리를 한 후 경고창을 띄운 후
+            // 코드를 종료 시킴
+            console.log(err);
+            res.statuc(500).send('Internal Server Error')
+          }
+          res.render('view',{topics:files, title:id, description:data});
+        })
+      }else
+      {
+        // id 값이 없을 때
+        res.render('view', {topics:files, title:'Welcome', description:'Hello'});
+      }
   })
 })
+
+/*
+app.get(['/topic','/topic/:id'], function(req, res)
+{
+  var id = req.params.id;
+  fs.readdir('data',function(err, files)
+  {
+      if(err)
+      {
+        console.log(err);
+        res.statuc(500).send('Internal Server Error')
+      }
+      fs.readFile('data/'+id,'utf8', function(err, data)
+      {
+        if(err)
+        {
+          // 에러가 발견 될 시 아래의 예외처리를 한 후 경고창을 띄운 후
+          // 코드를 종료 시킴
+          console.log(err);
+          res.statuc(500).send('Internal Server Error')
+        }
+        res.render('view',{topics:files, title:id, description:data});
+      })
+  })
+})
+*/
 
 // post 방식 처리 방법
 // 사용자로부터 제목과 내용을 받아
@@ -46,7 +99,7 @@ app.post('/topic', function(req, res)
         console.log(err);
         res.statuc(500).send('Internal Server Error')
       }
-      res.send('Success!');
+      res.redirect('/topic/'+title);
   });
 })
 
