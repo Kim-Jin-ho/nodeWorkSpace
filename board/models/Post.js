@@ -39,6 +39,7 @@ postSchema.virtual("updatedTime").get(function()
 
 
 // 모델 & export
+// db collections 에 접근하는 방법
 var Post = mongoose.model("post", postSchema);
 module.exports = Post;
 

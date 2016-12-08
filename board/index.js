@@ -5,7 +5,14 @@ var methodOverride = require('method-override');
 var app = express();
 
 // DB 세팅
-mongoose.connect(process.env.MONGO_DB);   // 시스템 환경변수에 설정된 DB 주소를 통하여 DB 연결
+// mongoose.connect(process.env.MONGO_DB);   // 시스템 환경변수에 설정된 DB 주소를 통하여 DB 연결
+mongoose.connect('mongodb://localhost/mongodb_tutorial');
+/*
+   mongoose.connect('mongodb://localhost/mongodb_tutorial');
+   직접 컴퓨터에 DB를 설치 한 후 접속 시 위와 같이 localhost/db명을 입력하여 접근한다.
+
+   외부의 ip로 접근 시 localhost 부분에 외부접속 ip 를 등록 하여 접근한다.
+*/
 var db = mongoose.connection;
 db.once("open", function()
 {
