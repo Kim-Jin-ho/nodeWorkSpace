@@ -5,8 +5,8 @@ var methodOverride = require('method-override');
 var app = express();
 
 // DB 세팅
-// mongoose.connect(process.env.MONGO_DB);   // 시스템 환경변수에 설정된 DB 주소를 통하여 DB 연결
-mongoose.connect('mongodb://localhost/mongodb_tutorial');
+mongoose.connect(process.env.MONGO_DB);   // 시스템 환경변수에 설정된 DB 주소를 통하여 DB 연결
+//mongoose.connect('mongodb://localhost/mongodb_tutorial');
 /*
    mongoose.connect('mongodb://localhost/mongodb_tutorial');
    직접 컴퓨터에 DB를 설치 한 후 접속 시 위와 같이 localhost/db명을 입력하여 접근한다.
@@ -35,6 +35,9 @@ app.use(methodOverride("_method"));
 // 라우터 연결
 app.use("/", require("./routes/home"));
 app.use("/posts", require("./routes/posts"));
+app.use("/frposts", require("./routes/freeposts"));
+app.use("/users", require("./routes/users"));
+
 // 포트 세팅
 app.listen(3000, function()
 {

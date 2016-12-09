@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <% include ../partials/head %>
+  <% include ../partials/head %>
 </head>
 <body>
   <% include ../partials/nav %>
     <div class="container post post-show">
-        <% include ./partials/header %>
+        <% include ./partials/frheader %>
           <div class="buttons">
-              <a class="btn btn-default" href="/posts">Back</a>
-              <a class="btn btn-default" href="/posts/<%= post._id %>/edit">Edit</a>
-              <form action="/posts/<%= post._id %>?_method=delete" method="post">
+              <a class="btn btn-default" href="/frposts">Back</a>
+              <a class="btn btn-default" href="/frposts/<%= post._id %>/fredit">Edit</a>
+              <form action="/frposts/<%= post._id %>?_method=delete" method="post">
                   <a class="btn btn-default" href="#" onclick="confirm('정말로 글을 삭제 하시겠습니까?')?this.parentElement.submit():null;">Delete</a>
               </form>
           </div>

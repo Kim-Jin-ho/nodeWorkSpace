@@ -41,8 +41,7 @@ router.get("/:id", function(req, res)
 // edit
 router.get("/:id/edit", function(req, res)
 {
- Post.findOne({_id:req.params.id}, function(err, post)
- {
+ Post.findOne({_id:req.params.id}, function(err, post){
   if(err) return res.json(err);
   res.render("posts/edit", {post:post});
  });
@@ -62,9 +61,16 @@ router.put("/:id", function(req, res)
 // 삭제
 router.delete("/:id", function(req, res)
 {
-  Post.remove({_id:req.param.id}, function(err)
+  var id = req.params.id
+  Post.remove({_id:id}, function(err)
   {
-    if(err) return res.json(err);
+    console.log(id);
+    if(err)
+    {
+      console.log("에러발생")
+      return res.json(err);
+    }
+    console.log("정상처리");
     res.redirect("/posts");
   });
 });
