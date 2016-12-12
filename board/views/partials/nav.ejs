@@ -13,12 +13,13 @@
             <li><a href="/frposts">자유게시판</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right"> <!-- 1 -->
-          <li><a href="/users/<%= user.username %>">My Account</a></li>
-          <li><a href="/logout">Logout</a></li>
-         <% } else { %>
-          <li><a href="/users/new">Sign Up</a></li>
-          <li><a href="/login">Login</a></li>
-         <% } %>
+          <% if(isAuthenticated){ %>
+           <li><a href="/users/<%= user.username %>">My Account</a></li>
+           <li><a href="/logout">Logout</a></li>
+          <% } else { %>
+           <li><a href="/users/new">Sign Up</a></li>
+           <li><a href="/login">Login</a></li>
+          <% } %>
         </ul>
     </div>
   </div>

@@ -1,40 +1,44 @@
 var mongoose = require('mongoose');
+var util  = require("../util");
 
 // 스키마
-var postSchema = mongoose.Schema(
-  {
-    title:{type:String, required:true},
-    body:{type:String},
-    createdAt:{type:Date, default:Date.now},
-    updateAD:{type:Date},
-  }
-  ,{
-    toObject:{virtuals:true}
-  });
+var postSchema = mongoose.Schema({
+ title:{type:String, required:[true,"제목을 입력하세요!"]},
+ body:{type:String, required:[true,"내용을 입력하세요!"]},
+ createdAt:{type:Date, default:Date.now},
+ updatedAt:{type:Date},
+},
+{
+ toObject:{virtuals:true}
+});
 
 // virtuals
 // 글작성 날짜
-postSchema.virtual("createdDate").get(function()
+postSchema.virtual("createdDate")
+.get(function()
 {
-  return getDate(this.createdAt);
-})
+ return util.getDate(this.createdAt); // 1
+});
 // 글작성 시간
-postSchema.virtual("createdTime").get(function()
+postSchema.virtual("createdTime")
+.get(function()
 {
-  return getTime(this.createdAt);
+ return util.getTime(this.createdAt); // 1
 });
 
 // 글 수정 날짜
-postSchema.virtual("updatedDate").get(function()
-{
-  return getDate(this.updatedAt);
+postSchema.virtual("updatedDate")
+.get(function(){
+
+ return util.getDate(this.updatedAt); // 1
 });
 
 
 // 글 수정 시간
-postSchema.virtual("updatedTime").get(function()
+postSchema.virtual("updatedTime")
+.get(function()
 {
-  return getTime(this.updatedAt);
+ return util.getTime(this.updatedAt); // 1
 });
 
 

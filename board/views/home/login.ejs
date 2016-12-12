@@ -13,7 +13,7 @@
           <h3 class="contentBoxTop">Login</h3>
           <fieldset>
             <div class="form-group <%= (errors.username)?'has-error':'' %>">
-              <label for="username" class="col-sm-3 control-label">Username</label>
+              <label for="username" class="col-sm-3 control-label">Id</label>
               <div class="col-sm-9">
                 <input class="form-control" type="text" id="username" name="username" value="<%= username %>">
                 <% if(errors.username){ %>
@@ -41,6 +41,7 @@
           <input class="btn btn-default" type="submit" value="Submit">
         </div>
       </form>
+
     </div> <!-- container end -->
   </body>
 </html>
