@@ -2,8 +2,10 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var flash = require("connect-flash");
+var session = require("express-session");
+var passport = require("./config/passport");
 var app = express();
-
 // DB 세팅
 mongoose.connect(process.env.MONGO_DB);   // 시스템 환경변수에 설정된 DB 주소를 통하여 DB 연결
 //mongoose.connect('mongodb://localhost/mongodb_tutorial');
@@ -31,6 +33,20 @@ app.use(express.static(__dirname+"/public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
+app.use(flash());
+app.use(session({secret:"MySecret"}));
+
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Custom Middlewares
+app.use(function(req, res, next)
+{
+  res.locals.isAuthenticated = req.isAuthenticated();
+  res.locals.user = req.user;
+  next();
+});
 
 // 라우터 연결
 app.use("/", require("./routes/home"));

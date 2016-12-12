@@ -4,15 +4,35 @@ var bcrypt = require('bcrypt-nodejs');
 // 스키마
 var userSchema = mongoose.Schema(
 {
-  username:{type:String, required:[true, "Username is required!"], unique:true},
-  password:{type:String, required:[true, "Password is required!"], select:false},
-  name:{type:String, required:[true, "Name is required!"]},
-  email:{type:String}
+  username:{
+             type:String,
+             required:[true,"아이디를 입력하세요."],
+             match:[/^.{4,12}$/,"Should be 4-12 characters!"],
+             trim:true,
+             unique:true
+           },
+  password:{
+             type:String,
+             required:[true,"비밀번호를 입력하세요."],
+             select:false
+           },
+  name:{
+          type:String,
+          required:[true,"이름을 입력하세요."],
+          match:[/^.{4,12}$/,"Should be 4-12 characters!"],
+          trim:true
+       },
+  email:{
+          type:String,
+          match:[/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,"이메일 형식을 맞추세요."],
+          trim:true
+        }
 },
 {
   toObject:{virtuals:true}
 });
 
+// virtuals
 userSchema.virtual("passwordConfirmation")
 .get(function(){ return this._passwordConfirmation;})
 .set(function(value){ this._passwordConfirmation=value;});
@@ -31,21 +51,29 @@ userSchema.virtual("newPassword")
 .set(function(value){ this._newPassword=value; });
 
 // password validation
+var passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/; // 2-1
+var passwordRegexErrorMessage = "8글자 이상을 입력하세요!";
 userSchema.path("password").validate(function(v)
 {
   var user = this;
+  // create user
   if(user.isNew)
   {
     if(!user.passwordConfirmation)
     {
-      user.invalidate("passwordConfirmation", "Password Confirmation is required!")
+      console.log("비밀번호 에러");
+      user.invalidate("passwordConfirmation", "비밀번호가 일치하지 않습니다.")
     }
-    if(user.password !== user.passwordConfirmation)
+    if(!passwordRegex.test(user.password))
     {
-      user.invalidate("passwordConfirmation", "Password Confirmation does not matched!");
+      user.invalidate("password", passwordRegexErrorMessage);
+    } else if(user.password !== user.passwordConfirmation)
+    {
+      console.log("비밀번호 에러");
+      user.invalidate("passwordConfirmation", "비밀번호가 일치하지 않습니다.");
     }
   }
-  // update user // 3-4
+  // update user
   if(!user.isNew)
   {
     if(!user.currentPassword)
@@ -55,14 +83,19 @@ userSchema.path("password").validate(function(v)
     if(user.currentPassword && !user.authenticate(user.currentPassword, user.originalPassword)){ // 4
      user.invalidate("currentPassword", "Current Password is invalid!");
     }
-    if(user.newPassword !== user.passwordConfirmation)
+    if(user.newPassword && !passwordRegex.test(user.newPassword))
     {
-     user.invalidate("passwordConfirmation", "Password Confirmation does not matched!");
+      console.log("비밀번호 에러");
+      user.invalidate("newPassword", passwordRegexErrorMessage);
+    } else if(user.newPassword !== user.passwordConfirmation)
+    {
+      console.log("비밀번호 에러");
+      user.invalidate("passwordConfirmation", "비밀번호가 일치하지 않습니다.");
     }
   }
 });
 
-// hash password 
+// hash password
 userSchema.pre("save", function (next){
  var user = this;
  if(!user.isModified("password")){

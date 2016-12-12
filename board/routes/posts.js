@@ -8,6 +8,7 @@ router.get("/", function(req, res)
   Post.find({}, function(err, posts)
   {
     if(err) return res.json(err);
+    console.log("게시판 접근");
     res.render("posts/index",{posts:posts});
   });
 });
@@ -15,6 +16,7 @@ router.get("/", function(req, res)
 //  new
 router.get("/new", function(req, res)
 {
+  console.log("게시판 글작성");
   res.render("posts/new");
 });
 
@@ -34,28 +36,32 @@ router.get("/:id", function(req, res)
   Post.findOne({_id:req.params.id}, function(err, post)
   {
     if(err) return res.json(err);
+    console.log("게시글 접근");
     res.render("posts/show", {post:post});
   });
 });
 
-// edit
+// 수정
 router.get("/:id/edit", function(req, res)
 {
- Post.findOne({_id:req.params.id}, function(err, post){
-  if(err) return res.json(err);
-  res.render("posts/edit", {post:post});
- });
+  var _id = req.params.id;
+  Post.findOne({_id}, function(err, post)
+  {
+    if(err) return res.json(err);
+    console.log(req.params.id+" 글수정 접근");
+    res.render("posts/edit", {post:post});
+  });
 });
 
 // 수정
 router.put("/:id", function(req, res)
 {
- req.body.updatedAt = Date.now();
- Post.findOneAndUpdate({_id:req.params.id}, req.body, function(err, post)
- {
-  if(err) return res.json(err);
-  res.redirect("/posts/"+req.params.id);
- });
+   req.body.updatedAt = Date.now();
+   Post.findOneAndUpdate({_id:req.params.id}, req.body, function(err, post)
+   {
+    if(err) return res.json(err);
+    res.redirect("/posts/"+req.params.id);
+   });
 });
 
 // 삭제
