@@ -12,10 +12,10 @@ router.post("/", function(req, res)
   {
    req.flash("user", req.body);
    req.flash("errors", util.parseError(err)); // 1
-   console.log("회원가입화면 접근");
+   console.log("회원가입화면 접근 " + Date());
    return res.redirect("/users/new");
   }
-  console.log("회원가입화면 접근");
+  console.log("회원가입화면 접근 " + Date());
   res.redirect("/users");
  });
 });
@@ -25,7 +25,7 @@ router.get("/new", function(req, res)
 {
   var user = req.flash("user")[0] || {};
   var errors = req.flash("errors")[0] || {};
-  console.log("회원가입화면 접근");
+  console.log("회원가입화면 접근 " + Date());
   res.render("users/new", { user:user, errors:errors });
 });
 
@@ -37,8 +37,10 @@ router.post("/", function(req, res){
     {
       req.flash("user", req.body);
       req.flash("errors", parseError(err));
+      console.log("회원가입 에러 "  + Date());
       return res.redirect("/users/new");
     }
+    console.log("회원가입 성공 " + Date());
     res.redirect("/users");
   });
 });
@@ -61,10 +63,12 @@ router.get("/:username/edit", function(req, res)
   if(!user){
     User.findOne({username:req.params.username}, function(err, user){
       if(err) return res.json(err);
+      console.log("회원 정보 수정 화면 " + Date());
       res.render("users/edit", { username:req.params.username, user:user, errors:errors });
     });
   } else
   {
+    console.log("회원 정보 수정 에러 화면 "  + Date());
     res.render("users/edit", { username:req.params.username, user:user, errors:errors });
   }
 });
@@ -80,7 +84,8 @@ router.put("/:username",function(req, res, next)
     // update user object
     user.originalPassword = user.password;
     user.password = req.body.newPassword? req.body.newPassword : user.password;
-    for(var p in req.body){
+    for(var p in req.body)
+    {
       user[p] = req.body[p];
     }
 
@@ -91,8 +96,10 @@ router.put("/:username",function(req, res, next)
      {
         req.flash("user", req.body);
         req.flash("errors", util.parseError(err)); // 1
+        console.log("회원 정보 수정 화면 비밀번호 오류 " + Date());
         return res.redirect("/users/"+req.params.username+"/edit");
      }
+     console.log("회원 정보 수정 성공 "  + Date());
      res.redirect("/users/"+req.params.username);
     });
   });
@@ -112,7 +119,7 @@ function parseError(errors)
     }
   } else if(errors.code == "11000" && errors.errmsg.indexOf("username") > 0)
   {
-    parsed.username = { message:"This username already exists!" };
+    parsed.username = { message:"Id가 중복됩니다." };
   } else {
     parsed.unhandled = JSON.stringify(errors);
   }

@@ -5,13 +5,13 @@ var passport= require("../config/passport"); // 1
 // home
 router.get("/", function(req, res)
 {
-  console.log("홈페이지 접근");
+  console.log("홈페이지 접근 " + Date());
   res.render("home/welcome");
 });
 
 router.get("/about", function(req, res)
 {
-  console.log("about 페이지 접근");
+  console.log("about 페이지 접근 " + Date());
   res.render("home/about");
 });
 
@@ -36,18 +36,22 @@ router.post("/login",
     if(!req.body.username)
     {
       isValid = false;
+      console.log("Id 입력 오류 " + Date());
       errors.username = "Id를 입력하세요.";
     }
     if(!req.body.password)
     {
       isValid = false;
+      console.log("비밀번호 입력 오류" + Date());
       errors.password = "비밀번호를 입력하세요.";
     }
 
     if(isValid){
+      console.log("로그인 성공 " + Date());
       next();
     } else {
       req.flash("errors",errors);
+      console.log("로그인 실패 " + Date());
       res.redirect("/login");
     }
   },
@@ -62,6 +66,7 @@ router.post("/login",
 router.get("/logout", function(req, res)
 {
   req.logout();
+  console.log("로그아웃 " + Date());
   res.redirect("/");
 });
 
