@@ -6,6 +6,7 @@ var flash = require("connect-flash");
 var session = require("express-session");
 var passport = require("./config/passport");
 var app = express();
+var upload = require('./routes/posts.js');
 // DB 세팅
 mongoose.connect(process.env.MONGO_DB);   // 시스템 환경변수에 설정된 DB 주소를 통하여 DB 연결
 //mongoose.connect('mongodb://localhost/mongodb_tutorial');
@@ -39,6 +40,9 @@ app.use(session({secret:"MySecret"}));
 // Passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+// upload
+ app.use('/upload',upload);
 
 // Custom Middlewares
 app.use(function(req, res, next)

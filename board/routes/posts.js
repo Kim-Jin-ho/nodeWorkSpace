@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var Post = require("../models/Post");
 var util  = require("../util");
+var fs = require("fs");
+var multiparty = require('multiparty');
 
 // 인덱스
 router.get("/", function(req, res)
@@ -24,9 +26,12 @@ router.get("/new", function(req, res)
 });
 
 // create
-router.post("/", function(req, res){
- Post.create(req.body, function(err, post){
-  if(err){
+router.post("/", function(req, res)
+{
+ Post.create(req.body, function(err, post)
+ {
+  if(err)
+  {
    req.flash("post", req.body);
    req.flash("errors", util.parseError(err));
    console.log("게시판 글작성 에러 " + Date());
