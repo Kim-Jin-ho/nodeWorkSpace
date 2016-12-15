@@ -1,0 +1,21 @@
+{
+  "name": "express_board",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Jeong Hyun Seung <hs9923@naver.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [
+    "node"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

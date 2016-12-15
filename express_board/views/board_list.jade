@@ -1,0 +1,39 @@
+
+extends layout
+
+block content
+
+    h1= title
+    p Welcome to #{title}
+    table.table.table-hover
+        thead
+            tr
+                th #
+                th Writer
+                th Title
+                th Hits
+                th Date
+        tbody
+
+
+        for article in articles
+            tr(onclick="javascript:location.href='/board/#{article._id}'")
+                td #{article._id}
+                td #{article.writer}
+                td #{article.title}
+                td #{article.hits}
+                td #{moment(article.date).format("YYYY년 MM월 DD일_hh:mm:ss")}
+
+    form#writeForm(action="board/write" method="post")
+        div.form-group
+            label Writer
+            input.form-control(type="text" name="writer")
+        div.form-group
+            label Title
+            input.form-control(type="text" name="title")
+        div.form-group
+            label Contents
+            textarea.form-control(name="contents" rows=10)
+        input.btn.btn-primary.btn-lg.btn-block(type='submit' value='Write')
+
+

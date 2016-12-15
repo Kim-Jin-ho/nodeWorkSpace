@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    -var article = data[0];
+    h3
+        span.label.label-primary _id : #{article._id}
+        span.label.label-success #{article.writer}
+        span.label.label-danger #{article.hits}
+    h1= article.title
+    hr
+    div #{article.contents}
+    hr
+    button.btn.btn-danger(onclick="javascript:") remove
+
