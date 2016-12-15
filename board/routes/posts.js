@@ -28,75 +28,33 @@ router.get("/new", function(req, res)
 // create
 router.post("/", function(req, res)
 {
- Post.create(req.body, function(err, post)
- {
-  if(err)
-  {
-   req.flash("post", req.body);
-   req.flash("errors", util.parseError(err));
-   console.log(err);
-   console.log("게시판 글작성 에러 " + Date());
-   return res.redirect("/posts/new");
-  }
-  // var form = new multiparty.Form();
-  //
-  // // get field name & value
-  // form.on('field',function(name,value){
-  //      console.log('normal field / name = '+name+' , value = '+value);
-  // });
-  //
-  // // file upload handling
-  // form.on('part',function(part){
-  //      var filename;
-  //      var size;
-  //      if (part.filename) {
-  //            filename = part.filename;
-  //            size = part.byteCount;
-  //      }else{
-  //            part.resume();
-  //
-  //      }
-  //
-  //      console.log("Write Streaming file :"+filename);
-  //      var writeStream = fs.createWriteStream('/tmp/'+filename);
-  //      writeStream.filename = filename;
-  //      part.pipe(writeStream);
-  //
-  //      part.on('data',function(chunk){
-  //            console.log(filename+' read '+chunk.length + 'bytes');
-  //      });
-  //
-  //      part.on('end',function(){
-  //            console.log(filename+' Part read complete');
-  //            writeStream.end();
-  //      });
-  // });
-  //
-  // // all uploads are completed
-  // form.on('close',function(){
-  //      res.status(200).send('Upload complete');
-  // });
-  //
-  // // track progress
-  // form.on('progress',function(byteRead,byteExpected){
-  //      console.log(' Reading total  '+byteRead+'/'+byteExpected);
-  // });
-  //
-  // form.parse(req);
-  console.log("게시판 글작성 성공 " + Date());
-  res.redirect("/posts");
- });
+   req.body.author = req.user._id; // 1
+   Post.create(req.body, function(err, post)
+   {
+      if(err)
+      {
+       req.flash("post", req.body);
+       req.flash("errors", util.parseError(err));
+       console.log(err);
+       console.log("게시판 글작성 에러 " + Date());
+       return res.redirect("/posts/new");
+      }
+    console.log("게시판 글작성 성공 " + Date());
+    res.redirect("/posts");
+   });
 });
 
-// show
+
 router.get("/:id", function(req, res)
 {
-  Post.findOne({_id:req.params.id}, function(err, post)
-  {
-    if(err) return res.json(err);
-    console.log("게시글 접근 " + Date());
-    res.render("posts/show", {post:post});
-  });
+ Post.findOne({_id:req.params.id}) // 2
+ .populate("author")               // 2
+ .exec(function(err, post)
+ {        // 2
+  if(err) return res.json(err);
+  console.log("게시물 접근");
+  res.render("posts/show", {post:post});
+ });
 });
 
 // 수정

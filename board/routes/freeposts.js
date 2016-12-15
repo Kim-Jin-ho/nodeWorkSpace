@@ -24,23 +24,28 @@ router.get("/frnew", function(req, res)
 });
 
 // create
-router.post("/", function(req, res){
- Post.create(req.body, function(err, post){
-  if(err){
-   req.flash("post", req.body);
-   req.flash("errors", util.parseError(err));
-   console.log("자유게시판 글작성 에러 "  + Date());
-   return res.redirect("/frposts/frnew");
-  }
-  console.log("자유게시판 글작성 성공 "  + Date());
-  res.redirect("/frposts");
- });
+router.post("/", function(req, res)
+{
+   req.body.author = req.user._id;
+   Post.create(req.body, function(err, post)
+   {
+    if(err){
+     req.flash("post", req.body);
+     req.flash("errors", util.parseError(err));
+     console.log("자유게시판 글작성 에러 "  + Date());
+     return res.redirect("/frposts/frnew");
+    }
+    console.log("자유게시판 글작성 성공 "  + Date());
+    res.redirect("/frposts");
+   });
 });
 
 // show
 router.get("/:id", function(req, res)
 {
-  Post.findOne({_id:req.params.id}, function(err, post)
+  Post.findOne({_id:req.params.id}) // 2
+  .populate("author")               // 2
+  .exec(function(err, post)  
   {
     if(err) return res.json(err);
     console.log("자유게시글 접근 "  + Date());
