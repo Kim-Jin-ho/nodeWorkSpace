@@ -1,0 +1,257 @@
+extends ../layout/layout
+block append header
+block contents
+    .page_header
+        .page_header_parallax
+            .container
+                .row
+                    .col-md-12
+                        h3
+                            span About
+                            | Lorem ipsum dolor
+                            br
+                            | amet iplus
+        .bcrumb-wrap
+            .container
+                .row
+                    .col-md-12
+                        ul.bcrumbs
+                            li
+                                a(href='#')
+                                    i.fa.fa-home
+                                    |  Home
+                            li About
+                        .clearfix
+    .inner-content
+        .container
+            // ABOUT
+            .section-about.space100
+                .row
+                    .col-md-6
+                        div
+                            img.img-responsive(src='/images/other/2.jpg', alt='')
+                    .col-md-6
+                        div
+                            h3 Who We Are & What We Do
+                            p
+                                | Cum nascetur ridiculus mus. Prae sent non sem eu mi malesuada viverra volutpat ut libero. Nullam a venenatis tellus. Nam fen convallis tristique. In imperdiet est sed aliquet imperdiet. Nulla libero orci, cursus ut consecr ac, tempus a odio. Etiam quis massa ac ante adipiscing consectetur. Duis dui turpis, porttitor sit amet metus sed, interdum tempus ipsum. Integer aliquam sem elementum pellentesque. Donec mollis eros dolor, a ongue neque venenatis vulputate. Etiam a eros adipiscing, dapibus ante id, luctus massa. Maecenas non quam interdum, aliquam leo a, ornare mi. Integer. faucibus turpis sed leo gravida laoreet. Curabitur at ligula.
+            // SERVICES
+            .section-services2.space40
+                .row
+                    .col-md-4
+                        h3
+                            | Awesome Features
+                            br
+                            | packed in one
+                        p.space30
+                            | Lorem Ipsum as their default model text
+                            | andasearchfor lorem ipsum will uncover many
+                            | web sites versions have over the years
+                        a.button.one.space30(href='#') Get Started!
+                    // end section
+                    .col-md-8
+                        .row
+                            .col-md-4.ss2-content
+                                i.icon-layout
+                                h4 80+ HTML pages
+                                p
+                                    | Suspendisse gravida purus nec facilisis quis ipsum massa hendrerit vitae lacinia odio rhoncus.
+                            // end section
+                            .col-md-4.ss2-content
+                                i.icon-bell2
+                                h4 Tons of Features
+                                p
+                                    | Suspendisse gravida purus nec facilisis quis ipsum massa hendrerit vitae lacinia odio rhoncus.
+                            // end section
+                            .col-md-4.ss2-content
+                                i.icon-download22
+                                h4 FREE Updates
+                                p
+                                    | Suspendisse gravida purus nec facilisis quis ipsum massa hendrerit vitae lacinia odio rhoncus.
+                            // end section
+            .clearfix
+            // TEAM
+            .section-team-block.space100
+                h2.content-head.text-center
+                    | Meet our Team
+                    em Our industry experts help scale grow and succeed.
+                .col-md-6.left
+                    img.img-responsive(src='/images/team/10.jpg', alt='')
+                    br
+                    h4 Jessica may
+                    p.smtfont UX Designer
+                    .small-sep.pull-right
+                    br
+                    p Lorem Ipsum as their default model texta anvarious versions have over the years
+                    br
+                    .social-c1
+                        a(href='#')
+                            i.fa.fa-facebook
+                        a(href='#')
+                            i.fa.fa-twitter
+                        a(href='#')
+                            i.fa.fa-google-plus
+                        a(href='#')
+                            i.fa.fa-linkedin
+                    br
+                    a.button.btn-small.pull-right(href='#') Read More
+                // end section
+                .col-md-6.right
+                    img.img-responsive(src='/images/team/11.jpg', alt='')
+                    br
+                    h4 John doe
+                    p.smtfont Lead Developer
+                    .small-sep.pull-left
+                    br
+                    p Lorem Ipsum as their default model texta anvarious versions have over the years
+                    br
+                    .social-c1
+                        a(href='#')
+                            i.fa.fa-facebook
+                        a(href='#')
+                            i.fa.fa-twitter
+                        a(href='#')
+                            i.fa.fa-google-plus
+                        a(href='#')
+                            i.fa.fa-linkedin
+                    br
+                    a.button.btn-small(href='#') Read More
+                // end section
+                .col-md-6.left
+                    img.img-responsive(src='/images/team/12.jpg', alt='')
+                    br
+                    h4 James Butler
+                    p.smtfont PHP Expert
+                    .small-sep.pull-right
+                    br
+                    p Lorem Ipsum as their default model texta anvarious versions have over the years
+                    br
+                    .social-c1
+                        a(href='#')
+                            i.fa.fa-facebook
+                        a(href='#')
+                            i.fa.fa-twitter
+                        a(href='#')
+                            i.fa.fa-google-plus
+                        a(href='#')
+                            i.fa.fa-linkedin
+                    br
+                    a.button.btn-small.pull-right(href='#') Read More
+                // end section
+                .col-md-6.right
+                    img.img-responsive(src='/images/team/13.jpg', alt='')
+                    br
+                    h4 Catherine
+                    p.smtfont Support Team
+                    .small-sep.pull-left
+                    br
+                    p Lorem Ipsum as their default model texta anvarious versions have over the years
+                    br
+                    .social-c1
+                        a(href='#')
+                            i.fa.fa-facebook
+                        a(href='#')
+                            i.fa.fa-twitter
+                        a(href='#')
+                            i.fa.fa-google-plus
+                        a(href='#')
+                            i.fa.fa-linkedin
+                    br
+                    a.button.btn-small(href='#') Read More
+                // end section
+                .clearfix
+            // INFO / SKILLS
+            .section-info.space50
+                .col-md-6
+                    h4 Why Choose Us
+                    .space30
+                    #accordion.panel-group
+                        .panel.panel-default
+                            .panel-heading
+                                h4.panel-title
+                                    a.accordion-toggle(data-toggle='collapse', data-parent='#accordion', href='#collapseOne1')
+                                        | Lorem ipsum dolor sit amet consectetur adipiscing elit
+                                        span.fa.fa-plus
+                            #collapseOne1.panel-collapse.collapse
+                                .panel-body
+                                    p
+                                        | Etiam cursus pellentesque neque, eget ullamcorper augue eleifend a. In sit amet pulvinar purus. Ut in nibh tortor. Nullam quis magna sed nunc facilisis blandit vel at erat. Donec blandit et nulla sed lacinia. Quisque ullamcorper tincidunt ante, ut feugiat felis consectetur ut.
+                        .clearfix.space10
+                        .panel.panel-default
+                            .panel-heading
+                                h4.panel-title
+                                    a.accordion-toggle(data-toggle='collapse', data-parent='#accordion', href='#collapseTwo1')
+                                        | Curabitur et diam vitae dolor aliquet et in massa
+                                        span.fa.fa-plus
+                            #collapseTwo1.panel-collapse.collapse
+                                .panel-body
+                                    p
+                                        | Nam ullamcorper imperdiet luctus. Vestibulum tincidunt malesuada mi, in posuere augue cursus nec. Morbi et vehicula risus, fermentum lacinia justo. Etiam tellus arcu, eleifend tristique enim rutrum iaculis risus, id tincidunt dui fringilla sed bibendum lorem.
+                        .clearfix.space10
+                        .panel.panel-default
+                            .panel-heading
+                                h4.panel-title
+                                    a.accordion-toggle(data-toggle='collapse', data-parent='#accordion', href='#collapseThree1')
+                                        | Proin faucibus sem sed dapibus dapibus
+                                        span.fa.fa-plus
+                            #collapseThree1.panel-collapse.collapse
+                                .panel-body
+                                    p
+                                        | Etiam cursus pellentesque neque, eget ullamcorper augue eleifend a. In sit amet pulvinar purus. Ut in nibh tortor. Nullam quis magna sed nunc facilisis blandit vel at erat. Donec blandit et nulla sed lacinia. Quisque ullamcorper tincidunt ante, ut feugiat felis consectetur ut.
+                        .clearfix.space10
+                        .panel.panel-default
+                            .panel-heading
+                                h4.panel-title
+                                    a.accordion-toggle(data-toggle='collapse', data-parent='#accordion', href='#collapseFour1')
+                                        | Lorem ipsum dolor sit amet consectetur adipiscing elit
+                                        span.fa.fa-plus
+                            #collapseFour1.panel-collapse.collapse
+                                .panel-body
+                                    p
+                                        | Etiam cursus pellentesque neque, eget ullamcorper augue eleifend a. In sit amet pulvinar purus. Ut in nibh tortor. Nullam quis magna sed nunc facilisis blandit vel at erat. Donec blandit et nulla sed lacinia. Quisque ullamcorper tincidunt ante, ut feugiat felis consectetur ut.
+                .col-md-6
+                    h4 Skills we are having
+                    .space30
+                    #skills
+                        .b-progress-bar(data-capacity='100', data-value='97')
+                            .progress-label Web Design - 97%
+                            .progress-scale
+                                .progress-line(style='width: 97%;')
+                        .b-progress-bar(data-capacity='100', data-value='86')
+                            .progress-label HTML/CSS - 86%
+                            .progress-scale
+                                .progress-line.m-2(style='width: 86%;')
+                        .b-progress-bar(data-capacity='100', data-value='78')
+                            .progress-label Graphic Design - 78%
+                            .progress-scale
+                                .progress-line.m-3(style='width: 78%;')
+                        .b-progress-bar(data-capacity='100', data-value='65')
+                            .progress-label WordPress - 65%
+                            .progress-scale
+                                .progress-line.m-4(style='width: 65%;')
+                    .gap(style='height: 20px;')
+                .clearfix
+            // TESTIMONIALS
+            section#section-testimonials
+                .container
+                    h2.content-head.text-center
+                        | Testimonials
+                        em Our industry experts help scale grow and succeed.
+                    .testimonial-box
+                        #testimonial.owl-carousel
+                            .quote-info
+                                img.img-responsive(src='/images/quote/1.jpg', alt='')
+                                p
+                                    | Duis iaculis mauris dui tellus arcu rhoncus tellus non suscipit nisl tincidunt eget. Mauris in porta sapien. Pellentesque luctus urna volutpat, mollis dolor porttitor, rutrum sem. Aliquam vitae orci a libero iaculis sollicitudin. Sed ullamcorper lorem justo, ut elementum enim dapibus vel.
+                                h2 David Billie
+                            .quote-info
+                                img.img-responsive(src='/images/quote/2.jpg', alt='')
+                                p
+                                    | Duis iaculis mauris dui tellus arcu rhoncus tellus non suscipit nisl tincidunt eget. Mauris in porta sapien. Pellentesque luctus urna volutpat, mollis dolor porttitor, rutrum sem. Aliquam vitae orci a libero iaculis sollicitudin. Sed ullamcorper lorem justo, ut elementum enim dapibus vel.
+                                h2 Katey Thane
+                            .quote-info
+                                img.img-responsive(src='/images/quote/3.jpg', alt='')
+                                p
+                                    | Duis iaculis mauris dui tellus arcu rhoncus tellus non suscipit nisl tincidunt eget. Mauris in porta sapien. Pellentesque luctus urna volutpat, mollis dolor porttitor, rutrum sem. Aliquam vitae orci a libero iaculis sollicitudin. Sed ullamcorper lorem justo, ut elementum enim dapibus vel.
+                                h2 Wally Buddy
+block append footer
