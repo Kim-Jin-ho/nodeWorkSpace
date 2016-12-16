@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+  h1 #{title}
+  a(href='/board/list') 리스트
+  br
+  form(action='/board/write' method='post')
+    // title, content
+    table.table.table-condensed(width='400')
+      tr
+        th 제목
+        td
+          input.form-control(type='text', name='title', size='30', maxlength='50')
+      tr
+        th 내용
+        td
+          textarea.form-control(name='content', cols='30', rows='10')
+      tr
+        td(colspan='2')
+          input.btn.btn-primary(type='submit', value='쓰기')
+          input.btn.btn-default(type='reset', value='취소')

@@ -1,0 +1,78 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='http://code.jquery.com/jquery-1.11.2.min.js')
+    script.
+      $(function () {
+      $('#modify').click(function () {
+      location.href = "/board/update/#{page}/#{data.num}";
+      });
+      $('#btnDel').click(function () {
+      $('#frm1').show();
+      $('#btnList').hide();
+      });
+      $('#cancel').click(function () {
+      $('#btnList').show();
+      $('#frm1').hide();
+      });
+      $('#del').click(function () {
+      if($('#passwd').val() == "") {
+      alert('비밀번호를 꼭 입력하세요!!!!');
+      $('#passwd').focus();
+      return;
+      }
+      document.frm1.submit();
+      });
+      });
+    // 합쳐지고 최소화된 최신 CSS
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
+    // 부가적인 테마
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css')
+    // 합쳐지고 최소화된 최신 자바스크립트
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
+    
+  body
+    .container
+      .row
+        h1
+        a(href='/board/list') 리스트
+        br
+        // num, title, content, passwd, regdate, hit, reply, recmd, id
+        table.table.table-condensed
+          tr
+            th 제목
+            td #{data.title}
+          tr
+            th 내용
+            td
+              pre.
+                #{data.content}
+          tr
+            th 아이디
+            td #{data.id}
+          tr
+            th 날짜
+            td #{data.myregdate}
+          tr
+            th 조회수
+            td #{data.hit}
+          tr
+            td(colspan='2')
+              span#btnList
+                input#modify.btn.btn-primary(type='button', value='수정')
+                input#btnDel.btn.btn-danger(type='button', value='삭제')
+                input.btn.btn-default(type='reset', value='취소', onclick='history.back();')
+              form#frm1.form-inline(action='/board/delete', method='post', style='display:none', name='frm1')
+                input.form-control(type='hidden', name='num', value='#{data.num}')
+                input.form-control(type='hidden', name='page', value='#{page}')
+                div
+                  | 비밀번호 : 
+                  input#passwd.form-control(type='password', name='passwd', size='12', maxlength='12')
+                  input#del.btn.btn-primary(type='button', value='DELETE')
+                  input#cancel.btn.btn-default(type='button', value='CANCEL')
+
+              form(action="/board/comment" method=post)
+

@@ -1,0 +1,181 @@
+extends ../layout/layout
+block append header
+block contents
+      // PAGE HEADER
+      .page_header
+        .page_header_parallax7
+          .container
+            .row
+              .col-md-12
+                h3
+                  span Careers
+                  | Lorem ipsum dolor 
+                  br
+                  | amet iplus
+        .bcrumb-wrap
+          .container
+            .row
+              .col-md-12
+                ul.bcrumbs
+                  li
+                    a(href='#')
+                      i.fa.fa-home
+                      |  Home
+                  li Careers
+                .clearfix
+      // INNER CONTENT
+      .inner-content
+        .container
+          .row
+            .col-md-7
+              img.img-responsive(src='images/other/3.jpg', alt='')
+            .col-md-5
+              .clearfix.space50
+              h3 Praesent pretium rutrum nibh volutpat
+              .clearfix.space10
+              p
+                | Lorem ipsum dolor sit amet scelerisque bibendum neque eget malesuada. Maecenas auctor mi ac facilisis condimentum. Nunc tincidunt viverra ullamcorper. Nunc nec feugiat magna. Suspendisse vestibulum ac eros sit amet condimentum. Etiam non lectus egestas, aliquet neque ut, viverra odio. Nulla id placerat mauris.
+              p
+                | Maecenas purus sapien, elementum rutrum dapibus etget purus bibendum mi mauris vel ligula. Nunc vel mauris id tellus pharetra vehicula et quis lectus. Curabitur id lectus mollis, tristique lectus rutrum, rhoncus ante. Sed dictum, ex id convallis placerat, ante odio tristique nisi, quis laoreet lorem lorem sed massa. Vivamus tristique feugiat lectus nec bibendum.
+          // careers top
+          .space60
+          .row
+            .col-md-12
+              h3.uppercase.text-center Current jobs Openings
+              .space40
+          .row.jobs-row
+            .col-md-8
+              #accordion-career.panel-group
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                      a(data-toggle='collapse', data-parent='#accordion-career', href='#collapseOne')
+                        i.icon-search
+                        |  Web Designer 
+                        br
+                        em (2-4 years of experience)
+                  #collapseOne.panel-collapse.collapse(style='')
+                    .panel-body
+                      | Nullam euismod, dolor ac pulvinar accumsan, neque nisl sollicitudin erat, nec fermentum metus diam eu purus. Aliquam euismod neque suscipit, mollis eros sit amet, volutpat ante. Praesent pretium rutrum nibh. Duis et bibendum ante, sit amet gravida mauris. Nam id placerat massa. Fusce non nibh purus. Quisque non ipsum vitae odio faucibus volutpat dictum in erat.
+                      .clearfix.space20
+                      p
+                        a.button.btn-small.color2(href='#') Apply Now
+                // panel end
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                      a.collapsed(data-toggle='collapse', data-parent='#accordion-career', href='#collapsetwo')
+                        i.icon-search
+                        | Android Developer 
+                        br
+                        em (5-9 years of experience)
+                  #collapsetwo.panel-collapse.collapse(style='height: 0px;')
+                    .panel-body
+                      | Nullam euismod, dolor ac pulvinar accumsan, neque nisl sollicitudin erat, nec fermentum metus diam eu purus. Aliquam euismod neque suscipit, mollis eros sit amet, volutpat ante. Praesent pretium rutrum nibh. Duis et bibendum ante, sit amet gravida mauris. Nam id placerat massa. Fusce non nibh purus. Quisque non ipsum vitae odio faucibus volutpat dictum in erat.
+                      .clearfix.space20
+                      p
+                        a.button.btn-small.color2(href='#') Apply Now
+                // panel end
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                      a.collapsed(data-toggle='collapse', data-parent='#accordion-career', href='#collapsethree')
+                        i.icon-search
+                        | Php Developer 
+                        br
+                        em (1-2 years of experience)
+                  #collapsethree.panel-collapse.collapse(style='height: 0px;')
+                    .panel-body
+                      | Nullam euismod, dolor ac pulvinar accumsan, neque nisl sollicitudin erat, nec fermentum metus diam eu purus. Aliquam euismod neque suscipit, mollis eros sit amet, volutpat ante. Praesent pretium rutrum nibh. Duis et bibendum ante, sit amet gravida mauris. Nam id placerat massa. Fusce non nibh purus. Quisque non ipsum vitae odio faucibus volutpat dictum in erat.
+                      .clearfix.space20
+                      p
+                        a.button.btn-small.color2(href='#') Apply Now
+                // panel end
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                      a.collapsed(data-toggle='collapse', data-parent='#accordion-career', href='#collapsefour')
+                        i.icon-search
+                        | UX Designer
+                        br
+                        em (Freshers can apply)
+                  #collapsefour.panel-collapse.collapse(style='height: 0px;')
+                    .panel-body
+                      | Nullam euismod, dolor ac pulvinar accumsan, neque nisl sollicitudin erat, nec fermentum metus diam eu purus. Aliquam euismod neque suscipit, mollis eros sit amet, volutpat ante. Praesent pretium rutrum nibh. Duis et bibendum ante, sit amet gravida mauris. Nam id placerat massa. Fusce non nibh purus. Quisque non ipsum vitae odio faucibus volutpat dictum in erat.
+                      .clearfix.space20
+                      p
+                        a.button.btn-small.color2(href='#') Apply Now
+                // panel end
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                      a.collapsed(data-toggle='collapse', data-parent='#accordion-career', href='#collapsefive')
+                        i.icon-search
+                        | Team leader
+                        br
+                        em (1-2 years of experience)
+                  #collapsefive.panel-collapse.collapse(style='height: 0px;')
+                    .panel-body
+                      | Nullam euismod, dolor ac pulvinar accumsan, neque nisl sollicitudin erat, nec fermentum metus diam eu purus. Aliquam euismod neque suscipit, mollis eros sit amet, volutpat ante. Praesent pretium rutrum nibh. Duis et bibendum ante, sit amet gravida mauris. Nam id placerat massa. Fusce non nibh purus. Quisque non ipsum vitae odio faucibus volutpat dictum in erat.
+                      .clearfix.space20
+                      p
+                        a.button.btn-small.color2(href='#') Apply Now
+                // panel end
+                .panel.panel-default
+                  .panel-heading
+                    h4.panel-title
+                      a.collapsed(data-toggle='collapse', data-parent='#accordion-career', href='#collapsesix')
+                        i.icon-search
+                        | Project manager
+                        br
+                        em (4-5 years of experience)
+                  #collapsesix.panel-collapse.collapse(style='height: 0px;')
+                    .panel-body
+                      | Nullam euismod, dolor ac pulvinar accumsan, neque nisl sollicitudin erat, nec fermentum metus diam eu purus. Aliquam euismod neque suscipit, mollis eros sit amet, volutpat ante. Praesent pretium rutrum nibh. Duis et bibendum ante, sit amet gravida mauris. Nam id placerat massa. Fusce non nibh purus. Quisque non ipsum vitae odio faucibus volutpat dictum in erat.
+                      .clearfix.space20
+                      p
+                        a.button.btn-small.color2(href='#') Apply Now
+                // panel end
+            .col-md-4
+              .our-office
+                h5.uppercase.no-margin Check Our Work Premisis
+                .space20
+                ul.workplace
+                  li
+                    a.mp-lightbox(href='images/other/work1.jpg')
+                      img.img-responsive(src='images/other/work1.jpg', alt='')
+                  li
+                    a.mp-lightbox(href='images/other/work2.jpg')
+                      img.img-responsive(src='images/other/work2.jpg', alt='')
+                  li
+                    a.mp-lightbox(href='images/other/work3.jpg')
+                      img.img-responsive(src='images/other/work3.jpg', alt='')
+                  li
+                    a.mp-lightbox(href='images/other/work4.jpg')
+                      img.img-responsive(src='images/other/work4.jpg', alt='')
+                  li
+                    a.mp-lightbox(href='images/other/work5.jpg')
+                      img.img-responsive(src='images/other/work5.jpg', alt='')
+                  li
+                    a.mp-lightbox(href='images/other/work6.jpg')
+                      img.img-responsive(src='images/other/work6.jpg', alt='')
+                .clearfix.space20
+                ul.feature-list
+                  li
+                    i.icon-square-check
+                    |  Retirement Plans
+                  li
+                    i.icon-square-check
+                    |  Health insurance
+                  li
+                    i.icon-square-check
+                    |  Work from home
+                  li
+                    i.icon-square-check
+                    |  Modern Workplace
+                  li
+                    i.icon-square-check
+                    |  Gamerooms
+                .clearfix
+          // job row end
+block append footer

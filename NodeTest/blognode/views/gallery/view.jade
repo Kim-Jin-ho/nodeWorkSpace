@@ -1,0 +1,43 @@
+extends ../layout/layout
+block append header
+block contents
+        // PAGE HEADER
+        .page_header
+            .page_header_parallax
+                .container
+                    .row
+                        .col-md-12
+                            h3
+                                span Page with title
+                                | Lorem ipsum dolor
+                                br
+                                | amet iplus
+            .bcrumb-wrap
+                .container
+                    .row
+                        .col-md-12
+                            ul.bcrumbs
+                                li
+                                    a(href='#')
+                                        i.fa.fa-home
+                                        |  Home
+                                li Page with Title
+                            .clearfix
+        // INNER CONTENT
+        .inner-content
+            .container
+                h2.uppercase.text-center.space30 Some perfect headline here
+                img.img-responsive(src='images/bg/3.jpg', alt='')
+                .clearfix.space30
+                p
+                    | Quisque nisi erat, laoreet vel venenatis sed, dapibus et tortor. Sed rhoncus est in urna facilisis aliquam. Donec vehicula mauris vitae aliquam iaculis. Quisque pharetra urna in ligula ultrices, in egestas metus commodo. Curabitur aliquet auctor metus, id iaculis purus vulputate sit amet. Mauris dictum odio lectus, quis ornare lacus dignissim id. Nullam a ante sodales, fermentum orci et, facilisis nibh. Phasellus nec felis libero. Suspendisse dignissim sit amet urna eu sodales. Donec vitae sodales velit.
+                p
+                    | Phasellus sed feugiat leo. Nam vitae viverra tortor, eu mattis nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam feugiat augue vel tellus tempus, vitae pretium velit venenatis. Donec eu posuere lectus. Quisque vel urna eu orci consectetur rutrum ac et ipsum. Donec convallis vestibulum orci at suscipit. Duis lobortis libero ut leo rutrum facilisis. Vivamus maximus facilisis fermentum. Fusce posuere luctus sem, eget rutrum tellus tincidunt finibus. Aenean id ligula ac velit hendrerit tempor ut at mi. Donec eu justo sed velit lacinia suscipit. Etiam dictum augue ante, non pulvinar turpis feugiat elementum. Aliquam malesuada, enim at suscipit convallis, ligula purus euismod sem, at mattis est turpis dapibus felis.
+                blockquote.style1
+                    p
+                        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. Lorem ipsum dolor sit amet. Integer posuere erat a ante.
+                    small
+                        b Author Name
+                p
+                    | In hac habitasse platea dictumst. Aenean sollicitudin, felis non sodales vestibulum, erat ipsum egestas tortor, vitae tincidunt augue quam quis ex. Phasellus ac laoreet leo. Vestibulum in dolor eget velit elementum iaculis. Aenean pulvinar leo sit amet venenatis euismod. Praesent cursus, felis in feugiat pellentesque, nisl nibh dapibus lacus, at feugiat arcu ante a dolor. Curabitur et egestas eros, quis blandit arcu.
+block append footer

@@ -1,0 +1,32 @@
+extends ../layout/layout
+block append header
+block contents
+      .page_header
+        .page_header_parallax
+          .container
+            .row
+              .col-md-12
+                h3
+                  | waCa's
+                  br
+                  | Gallery
+        .bcrumb-wrap
+          .container
+            .row
+              .col-md-12
+                ul.bcrumbs
+                  li
+                    a(href='/')
+                      i.fa.fa-home
+                      |  Home
+                  li Gallery - 5col
+                .clearfix
+      .inner-content
+        .container
+          h2.uppercase.text-center.space30 사진첩
+          ul.gal-5col
+            - for (var i =1 ; i<11; i++)
+              li
+                a.mp-lightbox(href='images/gallery/'+i+'.jpg')
+                  img.img-responsive(src='images/gallery/'+i+'.jpg', alt='')
+block append footer
