@@ -16,7 +16,7 @@ router.post("/", function(req, res)
    return res.redirect("/users/new");
   }
   console.log("회원가입화면 접근 " + Date());
-  res.redirect("/users");
+  res.redirect("/");
  });
 });
 
@@ -104,6 +104,7 @@ router.put("/:username",function(req, res, next)
     });
   });
 });
+
 
 module.exports = router;
 

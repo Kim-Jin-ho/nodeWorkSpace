@@ -1,17 +1,16 @@
 var mongoose = require('mongoose');
 
 // 스키마
-var postSchema = mongoose.Schema(
-  {
-    title:{type:String, required:true},
-    body:{type:String},
-    author:{type:mongoose.Schema.Types.ObjectId, ref:"user", required:true},
-    createdAt:{type:Date, default:Date.now},
-    updateAD:{type:Date},
-  }
-  ,{
-    toObject:{virtuals:true}
-  });
+var postSchema = mongoose.Schema({
+ title:{type:String, required:[true,"제목을 입력하세요!"]},
+ body:{type:String, required:[true,"내용을 입력하세요!"]},
+ author:{type:mongoose.Schema.Types.ObjectId, ref:"user", required:true}, //1
+ createdAt:{type:Date, default:Date.now},
+ updatedAt:{type:Date},
+},
+{
+ toObject:{virtuals:true}
+});
 
 // virtuals
 // 글작성 날짜

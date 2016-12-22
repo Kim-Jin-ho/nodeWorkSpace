@@ -45,7 +45,7 @@ router.get("/:id", function(req, res)
 {
   Post.findOne({_id:req.params.id}) // 2
   .populate("author")               // 2
-  .exec(function(err, post)  
+  .exec(function(err, post)
   {
     if(err) return res.json(err);
     console.log("자유게시글 접근 "  + Date());

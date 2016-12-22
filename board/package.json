@@ -21,6 +21,7 @@
     "mongoose": "^4.7.2",
     "multiparty": "^4.1.2",
     "passport": "^0.3.2",
+    "passport-kakao": "0.0.4",
     "passport-local": "^1.0.0"
   }
 }

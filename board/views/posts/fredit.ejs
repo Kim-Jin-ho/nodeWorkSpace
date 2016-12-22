@@ -7,7 +7,7 @@
   <% include ../partials/nav %>
 
   <div class="container post post-edit">
-   <% include ./partials/header %>
+   <% include ./partials/frheader %>
 
    <div class="buttons">
     <a class="btn btn-default" href="/frposts">Back</a>
@@ -15,7 +15,7 @@
 
    <form class="post-form form-horizontal" action="/frposts/<%= post._id %>?_method=put" method="post">
     <div class="contentBox">
-     <h3 class="contentBoxTop">Edit Post</h3>
+     <h3 class="contentBoxTop">Edit FreePost</h3>
      <fieldset>
       <div class="form-group <%= (errors.title)?'has-error':'' %>">
        <label for="title" class="col-sm-2 control-label">Title</label>
