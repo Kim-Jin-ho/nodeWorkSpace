@@ -41,9 +41,6 @@ app.use(session({secret:"MySecret"}));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// upload
-app.use('/upload',upload);
-
 // Custom Middlewares
 app.use(function(req, res, next)
 {
