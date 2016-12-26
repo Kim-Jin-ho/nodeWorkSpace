@@ -1,4 +1,4 @@
-var express = require('express');
+﻿var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
@@ -58,7 +58,7 @@ app.use("/frposts", require("./routes/freeposts"));
 app.use("/users", require("./routes/users"));
 
 // 포트 세팅
-app.listen(3000, function()
+app.listen(process.env.PORT || 3000, function()
 {
   console.log("서버가 켜졌습니다.");
 });
