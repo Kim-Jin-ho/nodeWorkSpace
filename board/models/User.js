@@ -18,7 +18,7 @@ var userSchema = mongoose.Schema({
   name:{
     type:String,
     required:[true,"이름을 입력하세요."],
-    match:[/^.{4,12}$/,"4~12자 사이로 입력하세요."],
+    match:[/^.{3,12}$/,"3~12자 사이로 입력하세요."],
     trim:true
   },
   email:{
