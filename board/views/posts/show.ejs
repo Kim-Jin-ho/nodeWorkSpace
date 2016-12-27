@@ -9,17 +9,17 @@
         <% include ./partials/header %>
           <div class="buttons">
               <a class="btn btn-default" href="/posts">Back</a>
-              <a class="btn btn-default" href="/posts/<%= post._id %>/edit">Edit</a>
-              <form action="/posts/<%= post._id %>?_method=delete" method="post">
-                  <a class="btn btn-default" href="#" onclick="confirm('정말로 글을 삭제 하시겠습니까?')?this.parentElement.submit():null;">Delete</a>
-              </form>
+                <a class="btn btn-default" href="/posts/<%= post._id %>/edit" id="edit">Edit</a>
+                <form action="/posts/<%= post._id %>?_method=delete" method="post">
+                    <a class="btn btn-default" href="#" onclick="confirm('정말로 글을 삭제 하시겠습니까?')?this.parentElement.submit():null;">Delete</a>
+                </form>
           </div>
           <div class="contentBox">
             <h3 class="contentBoxTop"><%= post.title %></h3>
             <div class="row">
               <div class="col-sm-4 col-sm-push-8">
                 <div class="post-info">
-                  <div><span>Author</span> : <%= post.author.username %></div> <!-- 1 -->
+                <div><span>Author</span> : <% if(post.author != null){ %><%= post.author.username %><% } %></div>
                   <div><span>Created</span> :
                       <%= post.createdDate %>
                           <%= post.createdTime %>

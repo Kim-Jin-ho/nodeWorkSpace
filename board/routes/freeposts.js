@@ -47,9 +47,24 @@ router.get("/:id", function(req, res)
   .populate("author")               // 2
   .exec(function(err, post)
   {
-    if(err) return res.json(err);
-    console.log("자유게시글 접근 "  + Date());
-    res.render("posts/frshow", {post:post});
+    try
+    {
+      if(req.user.id)
+      {
+        console.log("게시물 접근");
+        res.render("posts/frshow",
+        {
+            post: post
+        });
+      }
+    } catch (e)
+    {
+      console.log("비회원 게시물 접근");
+      res.render("posts/frshow2",
+      {
+        post: post
+      });
+    }
   });
 });
 
