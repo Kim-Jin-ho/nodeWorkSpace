@@ -5,6 +5,12 @@ form label{
  margin-bottom: 0;
  font-weight: 300;
 }
+
+@media screen and (-webkit-min-device-pixel-ratio:1.5){}
+#wrapper{with:auto;height:300px;}
+@media all and (min-width:768px) and (max-width:1024px){
+#wrapper{width:auto;height:300px;}
+}
 footer
 {
   background: #f4f4f4;
