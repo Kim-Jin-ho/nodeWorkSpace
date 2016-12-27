@@ -1,18 +1,21 @@
-<nav class="navbar navbar-inverse">
-  <div class="container">
+<nav class="navbar navbar-inverse row">
+  <div class="container row">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <div class="collapse navbar-collapse " id="myNavbar">
-        <ul class=" nav navbar-nav col-xs-8">
+    <div class="collapse navbar-collapse row" id="myNavbar">
+      <div class="col-xs-8">
+        <ul class=" nav navbar-nav">
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/posts">게시판</a></li>
             <li><a href="/frposts">자유게시판</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right"> <!-- 1 -->
+      </div>
+      <div class="col-xs-4">
+      <ul class="nav navbar-nav navbar-right "> <!-- 1 -->
           <% if(isAuthenticated){ %>
            <li><a href="/users/<%= user.username %>">My Account</a></li>
            <li><a href="/logout">Logout</a></li>
@@ -26,6 +29,7 @@
           </li>-->
           <% } %>
         </ul>
+      </div>
     </div>
   </div>
 </nav>
