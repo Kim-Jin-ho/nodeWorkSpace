@@ -121,7 +121,7 @@ router.put("/:id", function(req, res) {
     Post.findOneAndUpdate(
     {
         _id: req.params.id
-    }, req.body.post, {
+    }, req.body, {
         runValidators: true
     }, function(err, post)
     {
