@@ -9,10 +9,13 @@
         <% include ./partials/frheader %>
           <div class="buttons">
               <a class="btn btn-default" href="/frposts">Back</a>
+              <% if(post.author._id == id )
+              {%>
               <a class="btn btn-default" href="/frposts/<%= post._id %>/fredit">Edit</a>
               <form action="/frposts/<%= post._id %>?_method=delete" method="post">
                   <a class="btn btn-default" href="#" onclick="confirm('정말로 글을 삭제 하시겠습니까?')?this.parentElement.submit():null;">Delete</a>
               </form>
+            <% } %>
           </div>
           <div class="contentBox">
             <h3 class="contentBoxTop"><%= post.title %></h3>
@@ -46,5 +49,6 @@
           <!-- post-container end -->
     </div>
     <!-- container end -->
+       <% include ../partials/footer %>
 </body>
 </html>

@@ -16,16 +16,15 @@ router.get("/", function(req, res) {
           if(req.user.id !=null)
           {
             console.log(req.user.id);
-            res.render("posts/index", {
+            res.render("posts/index",
+            {
                 posts: posts
-
             });
           }
         } catch (e)
         {
           res.redirect("/login")
         }
-
     });
 });
 
@@ -69,10 +68,15 @@ router.get("/:id", function(req, res) {
             {
               if(req.user.id)
               {
+                var id = req.user.id;
+                console.log(req.user.id);
                 console.log("게시물 접근");
+                console.log(post.author._id);
                 res.render("posts/show",
                 {
-                    post: post
+                    post: post,
+                    id: id
+
                 });
               }
             } catch (e)

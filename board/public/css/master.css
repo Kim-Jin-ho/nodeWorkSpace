@@ -5,6 +5,15 @@ form label{
  margin-bottom: 0;
  font-weight: 300;
 }
+footer
+{
+  background: #f4f4f4;
+  height: 40px;
+  text-align: center;
+  margin-top: 30px;
+  padding: 10px;
+  overflow: auto;
+}
 form .form-control{
  padding: 3px 7px;
  font-size: inherit;

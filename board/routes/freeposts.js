@@ -10,7 +10,20 @@ router.get("/", function(req, res)
   {
     if(err) return res.json(err);
     console.log("자유게시판 접근 " + Date());
-    res.render("posts/frindex",{posts:posts});
+    try
+    {
+      if(req.user.id !=null)
+      {
+        console.log(req.user.id);
+        res.render("posts/frindex",
+        {
+            posts: posts
+        });
+      }
+    } catch (e)
+    {
+      res.redirect("/login")
+    }
   });
 });
 
@@ -41,31 +54,37 @@ router.post("/", function(req, res)
 });
 
 // show
-router.get("/:id", function(req, res)
-{
-  Post.findOne({_id:req.params.id}) // 2
-  .populate("author")               // 2
-  .exec(function(err, post)
-  {
-    try
-    {
-      if(req.user.id)
-      {
-        console.log("게시물 접근");
-        res.render("posts/frshow",
-        {
-            post: post
+router.get("/:id", function(req, res) {
+    Post.findOne({
+            _id: req.params.id,
+        }) // 2
+        .populate("author") // 2
+        .exec(function(err, post)
+        { // 2
+            if (err) return res.json(err);
+            try
+            {
+              if(req.user.id)
+              {
+                var id = req.user.id;
+                console.log(req.user.id);
+                console.log("자유게시판 게시물 접근"+Date());
+                console.log(post.author._id);
+                res.render("posts/frshow",
+                {
+                    post: post,
+                    id: id
+                });
+              }
+            } catch (e)
+            {
+              console.log("비회원 게시물 접근");
+              res.render("posts/frshow2",
+              {
+                post: post
+              });
+            }
         });
-      }
-    } catch (e)
-    {
-      console.log("비회원 게시물 접근");
-      res.render("posts/frshow2",
-      {
-        post: post
-      });
-    }
-  });
 });
 
 // 수정
