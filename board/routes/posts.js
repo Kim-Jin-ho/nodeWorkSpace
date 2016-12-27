@@ -16,16 +16,16 @@ router.get("/", function(req, res) {
           if(req.user.id !=null)
           {
             console.log(req.user.id);
+            res.render("posts/index", {
+                posts: posts
+
+            });
           }
         } catch (e)
         {
           res.redirect("/login")
         }
 
-        res.render("posts/index", {
-            posts: posts
-
-        });
     });
 });
 
