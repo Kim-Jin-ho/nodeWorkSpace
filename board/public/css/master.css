@@ -14,10 +14,12 @@ form .form-control{
  border-radius: 3px;
  width: 100%;
 }
+#p2{ color: Lavender; font-weight: bold;}
 form fieldset{
  margin: 7px 0 1px;
  padding: 0px 15px;
 }
+.jumbotron{ background: url(../images/bg.jpg) no-repeat;}
 form .form-group{
  margin: 0;
  padding-bottom: 6px;
@@ -81,10 +83,10 @@ form .form-group{
  font-size: 12px;
 }
 .post h2 {
- color: hotpink;
+ color: DarkSlateBlue;
  text-align: center;
 }
-.post h3{ color: hotpink; text-align: center;}
+.post h3{ color: DarkSlateBlueDarkSlateBlue; text-align: center;}
 .post .post-body {
  white-space: pre-line;
  padding: 6px 15px 20px;
