@@ -5,7 +5,13 @@ form label{
  margin-bottom: 0;
  font-weight: 300;
 }
-
+#postau{font-weight: bold;}
+.postau{font-weight: bold;}
+td{text-align: center; padding: -1px; margin: -1px;}
+tr{text-align: center;}
+th{text-align: center; }
+.date1{ padding: 0px; margin: 0px; width: 80px; }
+.author{ width: 75px; font-weight: bold}
 @media screen and (-webkit-min-device-pixel-ratio:1.5){}
 #wrapper{with:auto;height:300px;}
 @media all and (min-width:768px) and (max-width:1024px){

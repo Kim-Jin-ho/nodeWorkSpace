@@ -3,11 +3,15 @@ var router = express.Router();
 var Post = require("../models/Post");
 var util = require("../util");
 var fs = require("fs");
+var async = require('async');
+var Counter =require('../models/Counter')
 var multiparty = require('multiparty');
 
 // 인덱스
 router.get("/", function(req, res) {
-    Post.find({}, function(err, posts) {
+    Post.find()
+    .populate("author")
+    .sort('-createdAt').exec(function (err,posts) {
         if (err) return res.json(err);
         console.log("게시판 접근 " + Date());
 
@@ -42,7 +46,27 @@ router.get("/new", function(req, res) {
 // create
 router.post("/", function(req, res) {
     req.body.author = req.user._id; // 1
-    Post.create(req.body, function(err, post) {
+    async.waterfall([function(callback){
+    Counter.findOne({name:"posts"}, function (err,counter)
+    {
+      if(err) callback(err);
+      if(counter)
+      {
+         callback(null, counter);
+      } else {
+        Counter.create({name:"posts",totalCount:0},function(err,counter)
+        {
+          if(err) return res.json({success:false, message:err});
+          callback(null, counter);
+        });
+      }
+    });
+  }],function(callback, counter){
+    var newPost = req.body;
+    newPost.author = req.user._id;
+    newPost.numId = counter.totalCount+1;
+    Post.create(req.body,function (err,post)
+    {
         if (err) {
             req.flash("post", req.body);
             req.flash("errors", util.parseError(err));
@@ -50,13 +74,17 @@ router.post("/", function(req, res) {
             console.log("게시판 글작성 에러 " + Date());
             return res.redirect("/posts/new");
         }
+        counter.totalCount++;
+        counter.save();
         console.log("게시판 글작성 성공 " + Date());
         res.redirect("/posts");
-    });
+    })
+  });
 });
 
 
-router.get("/:id", function(req, res) {
+router.get("/:id", function(req, res)
+{
     Post.findOne({
             _id: req.params.id,
         }) // 2
@@ -72,12 +100,16 @@ router.get("/:id", function(req, res) {
                 console.log(req.user.id);
                 console.log("게시물 접근");
                 console.log(post.author._id);
+                post.views++;
+                post.save();
                 res.render("posts/show",
                 {
                     post: post,
                     id: id
-
                 });
+              }else
+              {
+                res.redirect("/login")
               }
             } catch (e)
             {

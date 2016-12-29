@@ -5,6 +5,8 @@ var postSchema = mongoose.Schema({
  title:{type:String, required:[true,"제목을 입력하세요!"]},
  body:{type:String, required:[true,"내용을 입력하세요!"]},
  author:{type:mongoose.Schema.Types.ObjectId, ref:"user", required:true}, //1
+ views: {type:Number, default: 0},
+ numId: {type:Number, required:true},
  createdAt:{type:Date, default:Date.now},
  updatedAt:{type:Date},
 },
