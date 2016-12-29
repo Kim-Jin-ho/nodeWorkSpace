@@ -10,14 +10,14 @@
       <div class="buttons">
           <a class="btn btn-default" href="/posts/new">New</a>
       </div>
-      <table class="table table-striped posts">
+      <table class="table table-hover">
         <thead>
             <tr>
-                <th class="num">Num</th>
-                <th class="title">Title</th>
-                <th class="views">Views</th>
-                <th class="date1">Date</th>
-                <th class="author">Author</th>
+                <th class="num text-center">Num</th>
+                <th class="title text-center" >Title</th>
+                <th class="views text-right">Views</th>
+                <th class="date1 text-right">Date</th>
+                <th class="author text-right">Author</th>
             </tr>
         </thead>
         <tbody>
@@ -31,21 +31,21 @@
             {
                %>
             <tr>
-                <td>
+                <td class="text-center">
                   <%= posts.numId %>
                 </td>
-                <td class="title">
+                <td class="text-center">
                     <a href="/posts/<%= posts._id %>">
                         <div>
                             <%= posts.title %>
                         </div>
                     </a>
                 </td>
-                <td><%= posts.views %></td>
-                <td class="date1" name="date1" id="date1">
+                <td class="text-right"><%= posts.views %></td>
+                <td class="text-right">
                     <%= posts.createdDate %>
                 </td>
-                <td  class="author" name="author" id="author" >
+                <td class="text-right">
                 <% if(posts.author != null)
                 {
                     console.log(posts.author);
