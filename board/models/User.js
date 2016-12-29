@@ -49,7 +49,7 @@ userSchema.virtual("newPassword")
 
 // password validation
 var passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/;
-var passwordRegexErrorMessage = "8글자 이상을 입력하세요.";
+var passwordRegexErrorMessage = "8글자[문자+숫자] 이상을 입력하세요.";
 userSchema.path("password").validate(function(v)
 {
   var user = this;
