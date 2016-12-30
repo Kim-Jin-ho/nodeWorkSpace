@@ -37,11 +37,11 @@
                   <!-- post-info end -->
               </div>
               <!-- col end-->
-              <div class="col-sm-8 col-sm-pull-4">
-                  <div class="post-body">
+              <div class="col-sm-8 col-sm-pull-4 form-group">
+                  <div class="post-body form-group">
                       <%= post.body %>
                   </div>
-                  <div class="comments">
+                  <div class="comments form-group">
                   <h4>Comments (<%= post.comments?post.comments.length:"0" %>)</h4>
                   <% if(post.comments) { %>
                     <% post.comments.forEach(function(comment){ %>
@@ -52,7 +52,7 @@
                           <%= post.getFormattedDate(comment.createdAt) %>)
                           <% if(user && user.equals(comment.author._id)) { %>
                             <form class="delete"  method="post" action="/posts/<%=post._id%>/comments/<%=comment._id%>?_method=delete&">
-                              <button type="button" onclick="confirm('Your comment will be deleted')?this.parentElement.submit():null;">x</button>
+                              <button type="button" Class="myButton" onclick="confirm('Your comment will be deleted')?this.parentElement.submit():null;">x</button>
                             </form>
                           <% } %>
                         </div>
@@ -64,7 +64,11 @@
                     <textarea class="cvRequired" type="text" name="comment[body]"
                       cvRqErrMsg="comments is empty." cvRqErrTo="#cvErrTitle" <%= user?"":"disabled" %>
                       placeholder="<%= user?"Add comment here":"Please login to make a comment" %>"></textarea>
-                    <button type="submit" <%= user?"":"disabled" %>>Comment</button>
+                      &nbsp;
+                    <span style="float:right">
+                      <button type="submit" class= "btn btn-default btn-small"<%= user?"":"disabled" %>>Comment</button>
+                    </span>
+                    &nbsp;
                     <div id="cvErrTitle" class="message"></div>
                   </form>
                 </div>
