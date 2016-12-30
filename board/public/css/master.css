@@ -1,3 +1,53 @@
+.comments .delete
+{
+  position:relative;
+  top:-1px;
+  padding: 1px 4px;
+  line-height: 10px;
+  min-width: 0;
+}
+.comments{
+  padding-top: 20px;
+  clear: both;
+}
+.comments h4{
+  width: 520px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 3px;
+  margin-bottom: 10px;
+}
+.comments .comment{
+  margin-bottom: 10px;
+}
+.comments form{
+  display: inline-block;
+  position : relative;
+}
+..comment .body{
+  word-break: break-all;
+  margin-left: 5px;
+  width: 505px;
+}
+.comment .delete .button{
+  position:relative;
+  top:-1px;
+  padding: 1px 4px;
+  line-height: 10px;
+  min-width: 0;
+}
+.addComment textarea{
+  width: 504px;
+  padding-left: 4px;
+  resize: vertical;
+}
+.addComment textarea[disabled]{
+  background-color:white
+}
+.addComment .button{
+  margin-left: 5px;
+  float:right;
+}
+
 /* global style */
 .buttons form{ display: inline-block;}
 form label{

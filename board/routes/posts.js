@@ -22,7 +22,8 @@ router.get("/", function(req, res) {
             console.log(req.user.id);
             res.render("posts/index",
             {
-                posts: posts
+                posts: posts,
+                urlQuery:createQuery(req._parsedUrl.query)
             });
           }
         } catch (e)
@@ -39,7 +40,8 @@ router.get("/new", function(req, res) {
     console.log("게시판 글작성 " + Date());
     res.render("posts/new", {
         post: post,
-        errors: errors
+        errors: errors,
+        urlQuery:createQuery(req._parsedUrl.query)
     });
 });
 
@@ -88,7 +90,7 @@ router.get("/:id", function(req, res)
     Post.findOne({
             _id: req.params.id,
         }) // 2
-        .populate("author") // 2
+        .populate(['author', 'comments.author']) // 2
         .exec(function(err, post)
         { // 2
             if (err) return res.json(err);
@@ -116,7 +118,8 @@ router.get("/:id", function(req, res)
               console.log("비회원 게시물 접근");
               res.render("posts/show2",
               {
-                post: post
+                post: post,
+                urlQuery:createQuery(req._parsedUrl.query)
               });
             }
         });
@@ -134,7 +137,8 @@ router.get("/:id/edit", function(req, res) {
             console.log("글수정 화면 접근 " + Date());
             res.render("posts/edit", {
                 post: post,
-                errors: errors
+                errors: errors,
+                urlQuery:createQuery(req._parsedUrl.query)
             });
         });
     } else {
@@ -142,7 +146,8 @@ router.get("/:id/edit", function(req, res) {
         console.log("글수정 화면 " + Date());
         res.render("posts/edit", {
             post: post,
-            errors: errors
+            errors: errors,
+            urlQuery:createQuery(req._parsedUrl.query)
         });
     }
 });
@@ -185,6 +190,42 @@ router.delete("/:id", function(req, res) {
     });
 });
 
+router.post('/:id/comments', function(req,res){
+  var newComment = req.body.comment;
+  newComment.author = req.user._id;
+  Post.update({_id:req.params.id},{$push:{comments:newComment}},function(err,post){
+    if(err) return res.json({success:false, message:err});
+    res.redirect('/posts/'+req.params.id+"?"+req._parsedUrl.query);
+  });
+}); //create a comment
+router.delete('/:postId/comments/:commentId', function(req,res){
+  Post.update({_id:req.params.postId},{$pull:{comments:{_id:req.params.commentId}}},
+    function(err,post){
+      if(err) return res.json({success:false, message:err});
+      res.redirect('/posts/'+req.params.postId+"?"+
+                   req._parsedUrl.query.replace(/_method=(.*?)(&|$)/ig,""));
+  });
+});
 
 // 모듈 연결
 module.exports = router;
+
+
+function createQuery(queryString){
+  return function(connectorChar, deleteArray){
+    var newQueryString = queryString?queryString:"";
+    if(deleteArray){
+      deleteArray.forEach(function(e){
+        var regex = new RegExp(e+"=(.*?)(&|$)", "ig");
+        newQueryString = newQueryString.replace(regex,"");
+      });
+    }
+    if(newQueryString){
+      newQueryString = newQueryString.replace(/&$/,"");
+    }
+    if(newQueryString){
+      newQueryString = connectorChar+newQueryString;
+    }
+    return newQueryString;
+  };
+}
