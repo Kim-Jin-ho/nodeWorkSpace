@@ -76,11 +76,17 @@
   line-height: 10px;
   min-width: 0;
 }
-.addComment textarea{
-  width: 504px;
+textarea.form-control {
+  height: 100%;
+}
+textarea {
+    height: 100%;
+}
+/*.addComment textarea{
+  width: 604px;
   padding-left: 4px;
   resize: vertical;
-}
+}*/
 .addComment textarea[disabled]{
   background-color:white
 }
