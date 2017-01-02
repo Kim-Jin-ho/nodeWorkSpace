@@ -26,29 +26,29 @@
                 <td class="noData" colspan=100> There is no data to show :( </td>
             </tr>
             <% } %>
-            <% posts.forEach(function(post) { %>
+            <% posts.forEach(function(posts) { %>
             <tr>
               <td class="num text-center">
-                <%= post.numId %>
+                <%= posts.numId %>
               </td>
                 <td class="title text-center">
-                    <a href="/frposts/<%= post._id %>">
+                    <a href="/frposts/<%= posts._id %>">
                         <div>
-                            <%= post.title %>
+                            <%= posts.title %>
                         </div>
                     </a>
                 </td>
-                <td class="text-right"><%= post.views %></td>
+                <td class="text-right"><%= posts.views %></td>
                 <td class="text-right">
-                    <%= post.createdDate %>
+                    <%= posts.createdDate %>
                 </td>
                 <td class="text-right">
-                <% if(post.author != null)
+                <% if(posts.author != null)
                 {
-                    console.log(post.author);
+                    console.log(posts.author);
                   %>
                   <p name="postau">
-                  <%= post.author.username %>
+                  <%= posts.author.username %>
             <% } %>
                   </p>
                   </td>
