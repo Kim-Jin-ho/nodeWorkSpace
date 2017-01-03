@@ -19,16 +19,22 @@
             <div class="row">
               <div class="col-sm-4 col-sm-push-8">
                 <div class="post-info">
+                  <!-- 글 작성자 표시 -->
                   <div><span>Author</span> : <% if(post.author != null){ %><%= post.author.username %><% } %></div>
+                  <!-- 작성일 화면 표시 -->
                   <div><span>Created</span> :
                       <%= post.createdDate %>
                           <%= post.createdTime %>
                   </div>
-                  <% if(post.updatedAt) { %>
-                  <div><span>Updated</span> :
-                      <%= post.updatedDate %>
-                          <%= post.updatedTime %>
-                  </div>
+
+                  <!-- 업데이트 날짜가 존재 시 화면에 출력 -->
+                  <% if(post.updatedAt)
+                  { %>
+                    <div>
+                    <span>Updated</span> :
+                        <%= post.updatedDate %>
+                            <%= post.updatedTime %>
+                    </div>
                   <% } %>
                 </div>
                   <!-- post-info end -->
