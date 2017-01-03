@@ -48,11 +48,12 @@
                       <div class="comment">
                         <div class="top">
                           <b><%= comment.author.username %></b>
+
                           (<%= post.getFormattedTime(comment.createdAt) %>,
                           <%= post.getFormattedDate(comment.createdAt) %>)
                           <% if(user && user.equals(comment.author._id)) { %>
                             <form class="delete"  method="post" action="/posts/<%=post._id%>/comments/<%=comment._id%>?_method=delete&">
-                              <button type="button" Class="myButton" onclick="confirm('Your comment will be deleted')?this.parentElement.submit():null;">x</button>
+                              <button type="button" Class="myButton" onclick="confirm('정말 삭제 하실겠습니까?')?this.parentElement.submit():null;">x</button>
                             </form>
                           <% } %>
                         </div>
