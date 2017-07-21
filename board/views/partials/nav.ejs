@@ -1,35 +1,36 @@
 <nav class="navbar navbar-inverse row">
-  <div class="container">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+    <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <div class="collapse navbar-collapse row" id="myNavbar">
-      <div class="col-xs-12 col-sm-6 col-md-8">
-        <ul class=" nav navbar-nav">
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/posts">게시판</a></li>
-            <li><a href="/frposts">자유게시판</a></li>
-        </ul>
-      </div>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <ul class="nav navbar-nav navbar-right"> <!-- 1 -->
-              <% if(isAuthenticated){ %>
-               <li><a href="/users/<%= user.username %>">My Account</a></li>
-               <li><a href="/logout">Logout</a></li>
-              <% } else { %>
-               <li><a href="/users/new">Sign Up</a></li>
-               <li><a href="/login">Login</a></li>
-              <!-- <li>
+        <div class="collapse navbar-collapse row" id="myNavbar">
+            <div class="col-xs-12 col-sm-6 col-md-8">
+                <ul class=" nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/posts">게시판</a></li>
+                    <li><a href="/frposts">자유게시판</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- 1 -->
+                    <% if(isAuthenticated){ %>
+                        <li><a href="/users/<%= user.username %>">My Account</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                        <% } else { %>
+                            <li><a href="/users/new">Sign Up</a></li>
+                            <li><a href="/login">Login</a></li>
+                            <!-- <li>
                    <a href="/auth/kakao">
                    <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_small.png"/>
                    </a>
               </li>-->
-              <% } %>
-            </ul>
+                            <% } %>
+                </ul>
+            </div>
         </div>
     </div>
-  </div>
 </nav>

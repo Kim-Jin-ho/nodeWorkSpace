@@ -1,47 +1,56 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <% include ../partials/head %>
 </head>
+
 <body>
-  <% include ../partials/nav %>
-    <div class="container post post-show">
-        <% include ./partials/header %>
-          <div class="buttons">
-              <a class="btn btn-default" href="/posts">Back</a>
-          </div>
-          <div class="contentBox">
-            <h3 class="contentBoxTop"><%= post.title %></h3>
-            <div class="row">
-              <div class="col-sm-4 col-sm-push-8">
-                <div class="post-info">
-                <div><span>Author</span> : <% if(post.author != null){ %><%= post.author.username %><% } %></div>
-                  <div><span>Created</span> :
-                      <%= post.createdDate %>
-                          <%= post.createdTime %>
-                  </div>
-                  <% if(post.updatedAt) { %>
-                  <div><span>Updated</span> :
-                      <%= post.updatedDate %>
-                          <%= post.updatedTime %>
-                  </div>
-                  <% } %>
+    <% include ../partials/nav %>
+        <div class="container post post-show">
+            <% include ./partials/header %>
+                <div class="buttons">
+                    <a class="btn btn-default" href="/posts">Back</a>
                 </div>
-                  <!-- post-info end -->
-              </div>
-              <!-- col end-->
-              <div class="col-sm-8 col-sm-pull-4">
-                  <div class="post-body">
-                      <%= post.body %>
-                  </div>
-              </div>
-              <!-- col end-->
-            </div>
-            <!-- row end -->
-          </div>
-          <!-- post-container end -->
-    </div>
-    <!-- container end -->
-       <% include ../partials/footer %>
+                <div class="contentBox">
+                    <h3 class="contentBoxTop">
+                        <%= post.title %>
+                    </h3>
+                    <div class="row">
+                        <div class="col-sm-4 col-sm-push-8">
+                            <div class="post-info">
+                                <div><span>Author</span> :
+                                    <% if(post.author != null){ %>
+                                        <%= post.author.username %>
+                                            <% } %>
+                                </div>
+                                <div><span>Created</span> :
+                                    <%= post.createdDate %>
+                                        <%= post.createdTime %>
+                                </div>
+                                <% if(post.updatedAt) { %>
+                                    <div><span>Updated</span> :
+                                        <%= post.updatedDate %>
+                                            <%= post.updatedTime %>
+                                    </div>
+                                    <% } %>
+                            </div>
+                            <!-- post-info end -->
+                        </div>
+                        <!-- col end-->
+                        <div class="col-sm-8 col-sm-pull-4">
+                            <div class="post-body">
+                                <%= post.body %>
+                            </div>
+                        </div>
+                        <!-- col end-->
+                    </div>
+                    <!-- row end -->
+                </div>
+                <!-- post-container end -->
+        </div>
+        <!-- container end -->
+        <% include ../partials/footer %>
 </body>
+
 </html>
