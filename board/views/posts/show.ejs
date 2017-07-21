@@ -1,86 +1,97 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <% include ../partials/head %>
 </head>
-<body>
-  <% include ../partials/nav %>
-    <div class="container post post-show form-group">
-        <% include ./partials/header %>
-          <div class="buttons form-group">
-              <a class="btn btn-default" href="/posts">Back</a>
-              <% if(post.author._id == id )
-              {%>
-                <a class="btn btn-default" href="/posts/<%= post._id %>/edit" id="edit">Edit</a>
-                <form action="/posts/<%= post._id %>?_method=delete" method="post">
-                    <a class="btn btn-default" href="#" onclick="confirm('정말로 글을 삭제 하시겠습니까?')?this.parentElement.submit():null;">Delete</a>
-                </form>
-              <% } %>
-          </div>
-          <div class="contentBox form-group">
-            <h3 class="contentBoxTop"><%= post.title %></h3>
-            <div class="row form-group">
-              <div class="col-sm-4 col-sm-push-8 form-group">
-                <div class="post-info">
-                <div><span>Author</span> : <% if(post.author != null){ %><%= post.author.username %><% } %></div>
-                  <div><span>Created</span> :
-                      <%= post.createdDate %>
-                          <%= post.createdTime %>
-                  </div>
-                  <% if(post.updatedAt) { %>
-                  <div><span>Updated</span> :
-                      <%= post.updatedDate %>
-                          <%= post.updatedTime %>
-                  </div>
-                  <% } %>
-                </div>
-                  <!-- post-info end -->
-              </div>
-              <!-- col end-->
-              <div class="col-sm-8 col-sm-pull-4 form-group">
-                  <div class="post-body form-group">
-                      <%= post.body %>
-                  </div>
-                  <div class="comments form-group">
-                  <h4>Comments (<%= post.comments?post.comments.length:"0" %>)</h4>
-                  <% if(post.comments) { %>
-                    <% post.comments.forEach(function(comment){ %>
-                      <div class="comment">
-                        <div class="top">
-                          <b><%= comment.author.username %></b>
-                          (<%= post.getFormattedTime(comment.createdAt) %>,
-                          <%= post.getFormattedDate(comment.createdAt) %>)
-                          <% if(user && user.equals(comment.author._id)) { %>
-                            <form class="delete"  method="post" action="/posts/<%=post._id%>/comments/<%=comment._id%>?_method=delete&">
-                              <button type="button" Class="myButton" onclick="confirm('Your comment will be deleted')?this.parentElement.submit():null;">x</button>
-                            </form>
-                          <% } %>
-                        </div>
-                        <div class="body"><%= comment.body %></div>
-                      </div>
-                    <% }) %>
-                  <% } %>
-                  </div>
-                  <div class="form-group">
-                    <form class="checkValidation form-group" action="/posts/<%=post._id%>/comments?" method="post">
-                      <textarea class="cvRequired form-control" row="20" type="text" name="comment[body]"
-                        cvRqErrMsg="comments is empty." cvRqErrTo="#cvErrTitle" <%= user?"":"disabled" %>
-                        placeholder="<%= user?"Add comment here":"Please login to make a comment" %>"></textarea>
-                        <button type="submit" class= "btn btn-default form-control"<%= user?"":"disabled" %>>Comment</button>
-                      &nbsp;
-                      <div id="cvErrTitle" class="message"></div>
-                    </form>
-                  </div>
 
-              </div>
-          </div>
-              <!-- col end-->
-            </div>
-            <!-- row end -->
-          </div>
-          <!-- post-container end -->
-    </div>
-    <!-- container end -->
-       <% include ../partials/footer %>
+<body>
+    <% include ../partials/nav %>
+        <div class="container post post-show form-group">
+            <% include ./partials/header %>
+                <div class="buttons form-group">
+                    <a class="btn btn-default" href="/posts">Back</a>
+                    <% if(post.author._id == id )
+              {%>
+                        <a class="btn btn-default" href="/posts/<%= post._id %>/edit" id="edit">Edit</a>
+                        <form action="/posts/<%= post._id %>?_method=delete" method="post">
+                            <a class="btn btn-default" href="#" onclick="confirm('정말로 글을 삭제 하시겠습니까?')?this.parentElement.submit():null;">Delete</a>
+                        </form>
+                        <% } %>
+                </div>
+                <div class="contentBox form-group">
+                    <h3 class="contentBoxTop">
+                        <%= post.title %>
+                    </h3>
+                    <div class="row form-group">
+                        <div class="col-sm-4 col-sm-push-8 form-group">
+                            <div class="post-info">
+                                <div><span>Author</span> :
+                                    <% if(post.author != null){ %>
+                                        <%= post.author.username %>
+                                            <% } %>
+                                </div>
+                                <div><span>Created</span> :
+                                    <%= post.createdDate %>
+                                        <%= post.createdTime %>
+                                </div>
+                                <% if(post.updatedAt) { %>
+                                    <div><span>Updated</span> :
+                                        <%= post.updatedDate %>
+                                            <%= post.updatedTime %>
+                                    </div>
+                                    <% } %>
+                            </div>
+                            <!-- post-info end -->
+                        </div>
+                        <!-- col end-->
+                        <div class="col-sm-8 col-sm-pull-4 form-group">
+                            <div class="post-body form-group">
+                                <%= post.body %>
+                            </div>
+                            <div class="comments form-group">
+                                <h4>Comments (
+                                    <%= post.comments?post.comments.length:"0" %>)</h4>
+                                <% if(post.comments) { %>
+                                    <% post.comments.forEach(function(comment){ %>
+                                        <div class="comment">
+                                            <div class="top">
+                                                <b><%= comment.author.username %></b> (
+
+                                                <%= post.getFormattedTime(comment.createdAt) %>,
+                                                    <%= post.getFormattedDate(comment.createdAt) %>)
+                                                        <% if(user && user.equals(comment.author._id)) { %>
+                                                            <form class="delete" method="post" action="/posts/<%=post._id%>/comments/<%=comment._id%>?_method=delete&">
+                                                                <button type="button" Class="myButton" onclick="confirm('정말 삭제 하실겠습니까?')?this.parentElement.submit():null;">x</button>
+                                                            </form>
+                                                            <% } %>
+                                            </div>
+                                            <div class="body">
+                                                <%= comment.body %>
+                                            </div>
+                                        </div>
+                                        <% }) %>
+                                            <% } %>
+                            </div>
+                            <div class="form-group">
+                                <form class="checkValidation form-group" action="/posts/<%=post._id%>/comments?" method="post">
+                                    <textarea class="cvRequired form-control" row="20" type="text" name="comment[body]" cvRqErrMsg="comments is empty." cvRqErrTo="#cvErrTitle" <%=u ser? "": "disabled" %>
+                        placeholder="<%= user?"Add comment here":"Please login to make a comment" %>"></textarea>
+                                    <button type="submit" class="btn btn-default form-control" <%=u ser? "": "disabled" %>>Comment</button> &nbsp;
+                                    <div id="cvErrTitle" class="message"></div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- col end-->
+                </div>
+                <!-- row end -->
+        </div>
+        <!-- post-container end -->
+        </div>
+        <!-- container end -->
+        <% include ../partials/footer %>
 </body>
+
 </html>

@@ -1,64 +1,68 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <% include ../partials/head %>
 </head>
+
 <body>
     <% include ../partials/nav %>
-    <div class="container post post-index">
-      <% include ./partials/frheader ﻿%>
-      <div class="buttons">
-          <a class="btn btn-default" href="/frposts/frnew" id="new">New</a>
-      </div>
-      <table class="table table-hover">
-        <thead>
-            <tr>
-              <th class="num text-center">Num</th>
-              <th class="title text-center" >Title</th>
-              <th class="views text-right">Views</th>
-              <th class="date1 text-right">Date</th>
-              <th class="author text-right">Author</th>
-            </tr>
-        </thead>
-        <tbody>
-          <% if(posts == null || posts.length == 0){ %>
-            <tr>
-                <td class="noData" colspan=100> There is no data to show :( </td>
-            </tr>
-            <% } %>
-            <% posts.forEach(function(post) { %>
-            <tr>
-              <td class="num text-center">
-                <%= post.numId %>
-              </td>
-                <td class="title text-center">
-                    <a href="/frposts/<%= post._id %>">
-                        <div>
-                            <%= post.title %>
-                        </div>
-                    </a>
-                </td>
-                <td class="text-right"><%= post.views %></td>
-                <td class="text-right">
-                    <%= post.createdDate %>
-                </td>
-                <td class="text-right">
-                <% if(post.author != null)
+        <div class="container post post-index">
+            <% include ./partials/frheader ﻿%>
+                <div class="buttons">
+                    <a class="btn btn-default" href="/frposts/frnew" id="new">New</a>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="num text-center">Num</th>
+                            <th class="title text-center">Title</th>
+                            <th class="views text-right">Views</th>
+                            <th class="date1 text-right">Date</th>
+                            <th class="author text-right">Author</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(posts == null || posts.length == 0){ %>
+                            <tr>
+                                <td class="noData" colspan=100> There is no data to show :( </td>
+                            </tr>
+                            <% } %>
+                                <% posts.forEach(function(posts) { %>
+                                    <tr>
+                                        <td class="num text-center">
+                                            <%= posts.numId %>
+                                        </td>
+                                        <td class="title text-center">
+                                            <a href="/frposts/<%= posts._id %>">
+                                                <div>
+                                                    <%= posts.title %>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td class="text-right">
+                                            <%= posts.views %>
+                                        </td>
+                                        <td class="text-right">
+                                            <%= posts.createdDate %>
+                                        </td>
+                                        <td class="text-right">
+                                            <% if(posts.author != null)
                 {
-                    console.log(post.author);
+                    console.log(posts.author);
                   %>
-                  <p name="postau">
-                  <%= post.author.username %>
-            <% } %>
-                  </p>
-                  </td>
-            </tr>
-            <% }) %>
-        </tbody>
-      </table>
-    </div>
-<!-- container end -->
-   <% include ../partials/footer %>
+                                                <p name="postau">
+                                                    <%= posts.author.username %>
+                                                        <% } %>
+                                                </p>
+                                        </td>
+                                    </tr>
+                                    <% }) %>
+                    </tbody>
+                </table>
+        </div>
+        <!-- container end -->
+        <% include ../partials/footer %>
 </body>
 
 </html>
